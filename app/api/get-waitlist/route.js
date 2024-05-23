@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 
 export async function GET(req, ev) {
-    const key = req.query.get('key');
+    const { key } = req.query.json()
     try {
         const value = await kv.get(key);
         return NextResponse.json({ key: value });
