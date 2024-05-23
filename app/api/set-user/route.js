@@ -4,7 +4,7 @@ import { kv } from '@vercel/kv';
 export async function POST(request) {
     try {
         const data = await request.json();
-        const newUser = kv.lpush('users', data);        
+        const newUser = kv.sadd('users', data);        
         return NextResponse.json({ 
             message: 'User Added Successfully!',
             data: data,
