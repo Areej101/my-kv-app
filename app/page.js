@@ -1,6 +1,21 @@
+'use client';
+import { useEffect } from "react";
 import Image from "next/image";
 
 export default function Home() {
+
+  useEffect(() => {
+
+    fetch(`${process.env.KV_REST_API_URL}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
