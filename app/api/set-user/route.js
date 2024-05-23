@@ -6,7 +6,7 @@ export async function POST(request) {
         const data = await request.json();
         kv.lpush('users', data);        
         return NextResponse.json({ 
-            message: 'User Added Successfully!'
+            message: 'User Added Successfully!',
             data: data 
         });
     } catch (error) {
